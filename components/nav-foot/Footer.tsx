@@ -93,7 +93,7 @@ const Footer = (props: Props) => {
             <p className="">70 AdaGeorge Road, Port Harcourt, Rivers State</p>
           </div>
         </div>
-        <div className="tw-flex tw-items-center tw-gap-[1rem] tw-text-16 tw-font-light tw-text-s1 tw-w-full tw-pt-[1rem] border-s7-top">
+        <div className="tw-flex tw-items-center tw-justify-center tw-gap-[1rem] tw-text-16 tw-font-light tw-text-s1 tw-w-full tw-pt-[1rem] sm:tw-justify-start  border-s7-top">
           <Image
             width={20}
             height={20}

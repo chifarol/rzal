@@ -2,8 +2,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import car1 from "../../assets/images/Nissan-Vera.png";
 import airConIcon from "../../assets/images/air-conditioned.svg";
-import checkboxIcon from "../../assets/images/checkbox.svg";
-import checkboxEmptyIcon from "../../assets/images/checkbox_empty.svg";
+import backIcon from "@/assets/images/arrow-left.svg";
 import doorsIcon from "../../assets/images/doors.svg";
 import seatsIcon from "../../assets/images/seats.svg";
 import filterIcon from "../../assets/images/filter.svg";
@@ -15,13 +14,21 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import NoResult from "../NoResult";
 import PageLoader from "../loaders/PageLoader";
-type Props = {};
+type Props = {
+  vehiclesData: VehicleArrayType;
+  modelsData: ModelType;
+  manfData: ModelType;
+};
 
-const Searchpage = (props: Props) => {
+const Searchpage = ({
+  vehiclesData: vData,
+  modelsData: mData,
+  manfData: mfData,
+}: Props) => {
   const router = useRouter();
-  const vehiclesResult = vehiclesData();
-  const modelsResult = modelsData();
-  const manufacturersResult = manufacturersData();
+  const vehiclesResult = vData;
+  const modelsResult = mData;
+  const manufacturersResult = mfData;
 
   const [mobileFilter, setMobileFilter] = useState(false);
   const [manufacturers, setManufacturers] = useState<ModelType>([]);
@@ -33,11 +40,11 @@ const Searchpage = (props: Props) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
-    setManufacturers(manufacturersResult.data);
+    setManufacturers(manufacturersResult);
   }, [manufacturersResult]);
 
   useEffect(() => {
-    const modelData: ModelType = modelsResult.data;
+    const modelData: ModelType = modelsResult;
     setModels(modelData);
   }, [modelsResult]);
 
@@ -67,19 +74,19 @@ const Searchpage = (props: Props) => {
     const modelQuery = router.query.model as string;
     const manfQuery = router.query.manufacturer as string;
     if (modelQuery && modelQuery !== "all") {
-      let vehicleFilter = vehiclesResult.data?.filter(
+      let vehicleFilter = vehiclesResult?.filter(
         (vehicle: any, index: number) =>
           vehicle.acf.vehicle_model.post_name == modelQuery
       );
       setVehicles(vehicleFilter);
     } else if (manfQuery && manfQuery !== "all") {
-      let vehicleFilter = vehiclesResult.data?.filter(
+      let vehicleFilter = vehiclesResult?.filter(
         (vehicle: any, index: number) =>
           vehicle.acf.vehicle_manufacturer.post_name == manfQuery
       );
       setVehicles(vehicleFilter);
     } else {
-      setVehicles(vehiclesResult.data);
+      setVehicles(vehiclesResult);
     }
   }, [vehiclesResult]);
 
@@ -88,7 +95,7 @@ const Searchpage = (props: Props) => {
   }, [vehicles]);
 
   useEffect(() => {
-    let v: VehicleArrayType = vehiclesResult.data?.map((item: any) => item);
+    let v: VehicleArrayType = vehiclesResult?.map((item: any) => item);
     if (searchTerm.length > 0) {
       let vehicleFilter = v?.filter((vehicle, index) => {
         if (
@@ -115,9 +122,9 @@ const Searchpage = (props: Props) => {
 
   // useEffect(() => {
   //   if (!searchTerm) {
-  //     // setVehicles(vehiclesResult.data);
+  //     // setVehicles(vehiclesResult);
   //   } else {
-  //     let v: VehicleArrayType = vehiclesResult.data;
+  //     let v: VehicleArrayType = vehiclesResult;
   //     let vehicleFilter = v?.filter(
   //       (vehicle, index) =>
   //         vehicle.slug.includes(searchTerm) ||
@@ -144,9 +151,7 @@ const Searchpage = (props: Props) => {
   return (
     <div className="tw-p-[4rem] md:tw-p-[1.5rem] tw-text-n1">
       {/* mobile filter */}
-      {!vehiclesResult.data ||
-      !modelsResult.data ||
-      !manufacturersResult.data ? (
+      {!vehiclesResult || !modelsResult || !manufacturersResult ? (
         <PageLoader />
       ) : (
         <>
@@ -255,6 +260,16 @@ const Searchpage = (props: Props) => {
               </div>
             )}
           </div>
+          <div onClick={() => window.history.back()}>
+            <Image
+              className="!tw-relative pointer tw-mb-[1rem]"
+              src={backIcon}
+              height={24}
+              width={24}
+              alt="vehicle"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
           <div className="tw-grid tw-grid-cols-[1fr_4fr] tw-gap-[2rem] md:tw-grid-cols-1">
             {/* filter section */}
             <div className="tw md:tw-hidden">
@@ -265,7 +280,7 @@ const Searchpage = (props: Props) => {
                   <span
                     className="tw-text-n5"
                     onClick={() => {
-                      // console.log(modelSearch)
+                      console.log(modelSearch);
                     }}
                   >
                     Type
@@ -372,7 +387,7 @@ const Searchpage = (props: Props) => {
                   // console.log("vehiclescat", vehicles)
                 }}
               >
-                Showing {vehicles?.length} of {vehiclesResult.data?.length}
+                Showing {vehicles?.length} of {vehiclesResult?.length}
               </div>
               <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[1rem] s:tw-flex s:tw-flex-col md:tw-mt-[.5rem]">
                 {/* GRID ITEM  */}
