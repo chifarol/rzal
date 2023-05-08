@@ -1,7 +1,19 @@
 const nodemailer = require("nodemailer");
 
 export default (req, res) => {
-  const { name, email, phone, text } = req.body;
+  const {
+    name,
+    email,
+    phone,
+    finalAdress,
+    takeoffAddress,
+    vehicle,
+    vehiclePageFr,
+    vehiclePage,
+    startDate,
+    returnDate,
+    text,
+  } = req.body;
   let status = false;
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -14,15 +26,29 @@ export default (req, res) => {
   const mailOption = {
     from: `${email}`,
     to: "lyricslator@gmail.com",
-    subject: `New message from a visitor @ rzal`,
+    subject: `New care hire request from ${email} @ rzal`,
     text: `
-    Sender's Name: ${name}
+    Vehicle:${vehicle}
 
-    Sender's Email: ${email}
+    Vehicle Front Page:${vehiclePageFr}
 
-    Sender's Phone: ${phone}
-    
-    text: ${text}
+    Vehicle Admin Page:${vehiclePage}
+
+    Client Name: ${name}
+
+    Client Email: ${email}
+
+    Client Phone: ${phone}
+
+    FinalAdress: ${finalAdress}
+
+    TakeoffAddress: ${takeoffAddress}
+
+    startDate: ${startDate}
+
+    returnDate: ${returnDate}
+
+    comments: ${text}
     `,
   };
 

@@ -15,11 +15,11 @@ export const menuOpenSlice = createSlice({
   reducers: {
     openMenu: (state) => {
       state.menuIsOpen = true;
-      console.log('menuIsOpen true')
+      // console.log('menuIsOpen true')
     },
     closeMenu: (state) => {
       state.menuIsOpen = false;
-      console.log('menuIsOpen false')
+      // console.log('menuIsOpen false')
     },
   },
 });

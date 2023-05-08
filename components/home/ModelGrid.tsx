@@ -7,15 +7,17 @@ import seatsIcon from "../../assets/images/seats.svg";
 import transmissionIcon from "../../assets/images/transmission.svg";
 import { modelsData } from "../functions/swr";
 import { ModelType } from "../functions/types";
+import Link from "next/link";
 
-type Props = {};
+type Props = {
+  modelsData: ModelType;
+};
 
-const ModelGrid = (props: Props) => {
-  const modelsResult = modelsData();
+const ModelGrid = ({ modelsData }: Props) => {
   const [models, setModels] = useState<ModelType>([]);
   useEffect(() => {
-    setModels(modelsResult.data);
-  }, [modelsResult]);
+    setModels(modelsData);
+  }, []);
   return (
     <div className="tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[1.5rem]">
       <p className="tw-text-n5 tw-font- tw-mb-[.5rem] md:tw-mb-0">
@@ -27,7 +29,8 @@ const ModelGrid = (props: Props) => {
       <div className="tw-grid tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[2rem] md:tw-mt-[1.5rem] md:tw-grid-cols-2">
         {/* GRID ITEM  */}
         {models?.map((model, index) => (
-          <a
+          <Link
+            key={index}
             href={`search?model=${model.slug}`}
             className="tw-flex tw-flex-col car-grid-item tw-w-full"
           >
@@ -45,7 +48,7 @@ const ModelGrid = (props: Props) => {
                 {model.title.rendered}
               </h6>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

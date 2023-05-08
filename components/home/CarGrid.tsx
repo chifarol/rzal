@@ -7,15 +7,17 @@ import seatsIcon from "../../assets/images/seats.svg";
 import transmissionIcon from "../../assets/images/transmission.svg";
 import { vehiclesData } from "../functions/swr";
 import { ModelType, VehicleArrayType } from "../functions/types";
+import Link from "next/link";
 
-type Props = {};
+type Props = {
+  vehiclesData: any;
+};
 
-const CarGrid = (props: Props) => {
-  const vehiclesResult = vehiclesData();
+const CarGrid = ({ vehiclesData }: Props) => {
   const [vehicles, setVehicles] = useState<VehicleArrayType>([]);
   useEffect(() => {
-    setVehicles(vehiclesResult.data);
-  }, [vehiclesResult]);
+    setVehicles(vehiclesData);
+  }, []);
 
   return (
     <div className="tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[1.5rem]">
@@ -30,7 +32,7 @@ const CarGrid = (props: Props) => {
         {vehicles?.map(
           (vehicle, index) =>
             index < 6 && (
-              <a
+              <Link
                 key={index}
                 href={`/details/${vehicle.slug}`}
                 className="tw-flex tw-flex-col tw-w-full car-grid-item sm:tw-w-full"
@@ -52,7 +54,7 @@ const CarGrid = (props: Props) => {
                     {vehicle.acf.vehicle_manufacturer.post_title}
                   </p>
                   {/* details grid */}
-                  <div className="tw-grid tw-grid-cols-2 tw-mt-[1rem] md:tw-grid-cols-1">
+                  <div className="tw-flex tw-flex-wrap tw-gap-[.5rem] tw-mt-[1rem] md:tw-grid-cols-1">
                     {/* grid item */}
                     <div className="tw-flex tw-gap-[.5rem] tw-items-center">
                       <Image
@@ -105,7 +107,7 @@ const CarGrid = (props: Props) => {
                     )}
                   </div>
                 </div>
-              </a>
+              </Link>
             )
         )}
       </div>

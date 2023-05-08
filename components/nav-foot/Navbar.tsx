@@ -8,6 +8,7 @@ import {
   closeMenu,
 } from "../../store/features/menuOpenSlice";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import Link from "next/link";
 
 type Props = {
   fill?: string;
@@ -18,26 +19,26 @@ const Navbar = ({ fill = "#221C29" }: Props) => {
   const menuIsOpen = useAppSelector(selectMenuIsOpen);
 
   useEffect(() => {
-    console.log(menuIsOpen);
+    // console.log(menuIsOpen);
   }, [menuIsOpen]);
 
   return (
     <div
-      className={`tw-flex tw-items-center tw-justify-between tw-text-s1 tw-px-[6rem] tw-py-[2rem] tw-bg-[${fill}] md:tw-p-[1rem_1.5rem]`}
+      className={`tw-flex tw-items-center tw-justify-between tw-text-s1 tw-px-[4rem] tw-py-[2rem] tw-bg-[${fill}] md:tw-p-[1rem_1.5rem]`}
     >
-      <a href="/" className="tw-text-24 tw-text-bold md:tw-text-16">
+      <Link href="/" className="tw-text-20 tw-text-bold md:tw-text-16">
         RITZ CAR HIRE
-      </a>
+      </Link>
       <div className="tw-flex tw-gap-[1.5rem] tw-text-medium tw-text-16 md:tw-hidden">
-        <a href="#" className="tw">
+        <Link href="/" className="tw">
           Home
-        </a>
-        <a href="/search?model=all&manufacturer=all" className="tw">
+        </Link>
+        <Link href="/search?model=all&manufacturer=all" className="tw">
           Hire
-        </a>
-        <a href="/#contact-us" className="tw">
+        </Link>
+        <Link href="/contact-us" className="tw">
           Contact Us
-        </a>
+        </Link>
       </div>
       <div
         className="tw-relative tw-hidden md:tw-block"
@@ -68,19 +69,19 @@ const Navbar = ({ fill = "#221C29" }: Props) => {
           </div>
         )}
         {menuIsOpen && (
-          <div className="tw-absolute tw-z-[40] tw-p-[.5rem_1rem] tw-right-[0.75rem] tw-top-[2rem] tw-bg-s2 tw-flex tw-flex-col tw-text-n1 tw-w-[150px] tw-rounded-[12px] sh-410">
-            <a href="#" className="tw-py-[.5rem] border-s7-bottom">
+          <div className="tw-absolute tw-z-[40] tw-p-[.5rem_1rem] tw-right-[0.75rem] tw-top-[2rem] tw-bg-s1 tw-flex tw-flex-col tw-text-n1 tw-w-[150px] tw-rounded-[12px] sh-410">
+            <Link href="#" className="tw-py-[.5rem] border-s7-bottom">
               Home
-            </a>
-            <a href="#" className="tw-py-[.5rem] border-s7-bottom">
+            </Link>
+            <Link href="#" className="tw-py-[.5rem] border-s7-bottom">
               Catalogue
-            </a>
-            <a href="#" className="tw-py-[.5rem] border-s7-bottom">
+            </Link>
+            <Link href="#" className="tw-py-[.5rem] border-s7-bottom">
               Hire
-            </a>
-            <a href="#" className="tw-py-[.5rem] border-s7-bottom">
+            </Link>
+            <Link href="#" className="tw-py-[.5rem] border-s7-bottom">
               Contact Us
-            </a>
+            </Link>
           </div>
         )}
       </div>

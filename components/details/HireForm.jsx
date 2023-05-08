@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 
-export const ContactForm = ({ vehicleData }) => {
+export const HireForm = ({ vehicleData }) => {
   const [account, setAccount] = useState({
     startdate: "",
     enddate: "",
@@ -37,8 +37,8 @@ export const ContactForm = ({ vehicleData }) => {
       setIsSending(false)
       return
     }
-    console.log(fnameRef.current.value, emailRef.current.value, messageRef.current.value);
-    axios.post("/api/contact",
+    // console.log(fnameRef.current.value, emailRef.current.value, messageRef.current.value);
+    axios.post("/api/hire",
       {
         name: fnameRef.current.value,
         email: emailRef.current.value,
@@ -54,7 +54,7 @@ export const ContactForm = ({ vehicleData }) => {
       },
     )
       .then((res) => {
-        console.log("mail status", res);
+        // console.log("mail status", res);
         setIsSending(false)
         if (res.data.emailStatus) {
           setEmailMsg({ text: "Your request was submitted successfully. One of our representatives will contact you shortly.", success: true });
@@ -64,7 +64,7 @@ export const ContactForm = ({ vehicleData }) => {
         }
       })
       .catch((err) => {
-        console.log("mail error", err.message);
+        // console.log("mail error", err.message);
       })
   }
   function handleChange(e) {

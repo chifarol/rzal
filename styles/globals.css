@@ -116,6 +116,9 @@ textarea:focus {
 .border-s7-bottom {
   border-bottom: 1px solid #dcd2e7;
 }
+.border-s7-top {
+  border-top: 1px solid #dcd2e7;
+}
 .border-n4 {
   border: 3px solid #948e9a;
 }
@@ -127,6 +130,13 @@ textarea:focus {
 }
 .sh-24 {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.1));
+}
+.truncate-sm {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow-y: hidden;
 }
 .hero-bg {
   background: url("/images/image_bg.png");
@@ -146,17 +156,28 @@ textarea:focus {
   filter: drop-shadow(0px 4px 8px rgba(44, 0, 81, 0.15));
   /* border: 3px solid #948e9a; */
 }
+.page-loader-svg {
+  enable-background: new 0 0 50 50;
+}
+.loader svg path,
+.loader svg rect {
+  fill: #221c29;
+}
+.loader {
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
 @media screen and (max-width: 1200px) and (min-width: 700px) {
   .hero-bg {
     background-size: 800px !important;
   }
 }
 @media screen and (max-width: 600px) {
-  .truncate-sm {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    overflow-y: hidden;
-  }
 }

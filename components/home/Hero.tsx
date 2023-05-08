@@ -4,6 +4,7 @@ import heroImg from "../../../assets/images/image_bg.png";
 import Navbar from "../nav-foot/Navbar";
 import { manufacturersData, modelsData, useSwrGet } from "../functions/swr";
 import { ModelType } from "../functions/types";
+import Link from "next/link";
 
 const Hero = () => {
   useState;
@@ -11,14 +12,19 @@ const Hero = () => {
   const manufacturersResult = manufacturersData();
   const [models, setModels] = useState<ModelType>([]);
   const [makers, setMakers] = useState<ModelType>([]);
-  const [model, setModel] = useState<string>("");
-  const [maker, setMaker] = useState<string>("");
+  const [modelTarget, setModelTarget] = useState<string>("all");
+  const [makerTarget, setMakerTarget] = useState<string>("all");
 
   // console.log("data", models);
   // console.log("error", result.error);
   useEffect(() => {
     setModels(modelsResult.data);
     setMakers(manufacturersResult.data);
+    modelsResult.data
+      ? setModelTarget(modelsResult.data[0].slug)
+      : setModelTarget("all");
+
+    setMakerTarget("all");
   }, [modelsResult, manufacturersResult]);
 
   return (
@@ -39,31 +45,41 @@ const Hero = () => {
           <div className="tw-flex tw-gap-[.5rem] tw-font-bold tw-uppercase">
             <div className="tw-text-n1 tw-px-[1.5rem] border-n5-right md:tw-px-[.5rem]">
               <p className="tw-text-n5 tw-text-12 tw-mb-[.5rem] md:tw-mb-0">
-                Manufacturer
-              </p>
-              <select
-                name=""
-                id=""
-                className="tw-text-16 tw-uppercase pointer md:tw-text-[14px]"
-              >
-                {models?.map((model, index) => (
-                  <option value="toyota" key={index}>
-                    {model.title.rendered}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="tw-text-n1 tw-px-[1.5rem] md:tw-px-[.5rem]">
-              <p className="tw-text-n5 tw-text-12 tw-mb-[.5rem] md:tw-mb-0">
                 Model
               </p>
               <select
                 name=""
                 id=""
                 className="tw-text-16 tw-uppercase pointer md:tw-text-[14px]"
+                onChange={(e) => setModelTarget(e.target.value)}
               >
+                {models?.map((model, index) => {
+                  return (
+                    <option
+                      value={model.slug}
+                      key={index}
+                      selected={index == 0}
+                    >
+                      {model.title.rendered}
+                    </option>
+                  );
+                })}
+                <option value="all">All</option>
+              </select>
+            </div>
+            <div className="tw-text-n1 tw-px-[1.5rem] md:tw-px-[.5rem]">
+              <p className="tw-text-n5 tw-text-12 tw-mb-[.5rem] md:tw-mb-0">
+                Manufacturer
+              </p>
+              <select
+                name=""
+                id=""
+                className="tw-text-16 tw-uppercase pointer md:tw-text-[14px]"
+                onChange={(e) => setMakerTarget(e.target.value)}
+              >
+                <option value="all">All</option>
                 {makers?.map((maker, index) => (
-                  <option value={maker.title.rendered} key={index}>
+                  <option value={maker.slug} key={index}>
                     {maker.title.rendered}
                   </option>
                 ))}
@@ -71,9 +87,12 @@ const Hero = () => {
             </div>
           </div>
           {/* button */}
-          <div className="pointer tw-bg-p4 tw-text-24 tw-text-s2 tw-p-[1rem_2rem] tw-rounded-[1rem] md:tw-p-[1rem] md:tw-text-16 sm:tw-w-full tw-text-center">
+          <Link
+            href={`/search?model=${modelTarget}&manufacturer=${makerTarget}`}
+            className="pointer tw-bg-p4 tw-text-24 tw-text-s2 tw-p-[1rem_2rem] tw-rounded-[1rem] md:tw-p-[1rem] md:tw-text-16 sm:tw-w-full tw-text-center"
+          >
             Find Vehicle
-          </div>
+          </Link>
         </div>
       </div>
     </div>
