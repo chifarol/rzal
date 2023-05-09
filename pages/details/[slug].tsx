@@ -49,7 +49,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const vehicleData: VehicleType[] = await axios
     .get(
       process.env.NEXT_PUBLIC_BACKEND_SERVER_URL +
-        `/wp-json/wp/v2/vehicles?acf_format=standard&_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=featured_media&_fields[]=guid&_fields[]=acf&_fields[]=yoast_head&_fields[]=yoast_head_json`
+        `/wp-json/wp/v2/vehicles?slug=${params?.slug}&acf_format=standard&_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=featured_media&_fields[]=guid&_fields[]=acf&_fields[]=yoast_head&_fields[]=yoast_head_json`
     )
     .then((res) => res.data);
   // console.log("vehicleData", vehicleData);
