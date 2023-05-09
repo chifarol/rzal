@@ -5,7 +5,7 @@ type Props = {};
 const Steps = (props: Props) => {
   return (
     <div className="section1 tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[1rem]">
-      <h3 className="tw-text-32 tw-text-n1 tw-font-bold md:tw-text-24 md:tw-mb-[1rem]">
+      <h3 className="tw-text-32 tw-text-n1 tw-font-bold md:tw-text-24 tw-mt-[2rem] md:tw-mb-[1rem]">
         RENT A CAR IN 3 STEPS
       </h3>
       <div className="tw-w-full tw-flex tw-justify-between tw-gap-[1rem] md:tw-justify-center  md:tw-flex-wrap md:tw-gap-[1rem]">
