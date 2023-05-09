@@ -121,26 +121,8 @@ const Searchpage = ({
     }
   }, [manfSearch, searchTerm, modelSearch]);
 
-  // useEffect(() => {
-  //   if (!searchTerm) {
-  //     // setVehicles(vehiclesResult);
-  //   } else {
-  //     let v: VehicleArrayType = vehiclesResult;
-  //     let vehicleFilter = v?.filter(
-  //       (vehicle, index) =>
-  //         vehicle.slug.includes(searchTerm) ||
-  //         vehicle.title.rendered.includes(searchTerm)
-  //     );
-  //     setVehicles(vehicleFilter);
-  //     console.log("vehicleFilter", vehicleFilter);
-  //   }
-  // }, [searchTerm]);
-
   function addRemoveString(arr: string[], target: string, isChecked: boolean) {
     let arrClone = arr.map((item) => item);
-    // console.log("isChecked", isChecked);
-    // console.log("target", target);
-    // console.log("arrClone before", arrClone);
     if (isChecked) {
       arrClone.push(target);
     } else {
@@ -151,16 +133,16 @@ const Searchpage = ({
   }
   return (
     <div className="tw-p-[4rem] md:tw-p-[1.5rem] tw-text-n1">
-      {/* mobile filter */}
       {!vehiclesResult || !modelsResult || !manufacturersResult ? (
         <PageLoader />
       ) : (
         <>
-          <div
-            className="tw-w-[fit-content] tw-pl-[2rem] tw-mt-[-4.5rem] tw-fixed tw-bottom-[2rem] tw-left-[2rem] tw-z-[10] pointer tw-hidden md:tw-block"
-            onClick={() => setMobileFilter(!mobileFilter)}
-          >
-            <div className="tw-ml-[-3rem] tw-h-[3rem] tw-w-[3rem] tw-grid tw-place-items-center tw-bg-s1 tw-rounded-[100px] sh-24">
+          <div className="tw-w-[fit-content] tw-pl-[2rem] tw-mt-[-4.5rem] tw-fixed tw-bottom-[2rem] tw-left-[2rem] tw-z-[10] pointer tw-hidden md:tw-block">
+            {/* mobile filter */}
+            <div
+              className="tw-ml-[-3rem] tw-h-[3rem] tw-w-[3rem] tw-grid tw-place-items-center tw-bg-s1 tw-rounded-[100px] sh-24"
+              onClick={() => setMobileFilter(!mobileFilter)}
+            >
               <Image
                 alt="whatsapp-icon"
                 width={32}

@@ -35,7 +35,7 @@ const ManfGrid = ({ manfData }: Props) => {
             key={index}
           >
             <Image
-              className="!tw-relative tw-min-h-[3rem]"
+              className="!tw-relative tw-min-h-[3rem] sm:tw-min-h-[1.5rem]"
               src={manufacturer.acf.image}
               fill
               alt="model"

@@ -180,4 +180,7 @@ textarea:focus {
   }
 }
 @media screen and (max-width: 600px) {
+  .hero-bg {
+    background-size: 600px !important;
+  }
 }

@@ -39,7 +39,7 @@ const Hero = () => {
         </h1>
 
         {/* CTA */}
-        <div className="tw-bg-s1 tw-flex tw-items-center tw-gap-[2rem] tw-p-[.5rem] tw-rounded-[1.5rem] tw-w-[fit-content] tw-mx-[auto] tw-mt-[10rem] md:tw-gap-[1rem] md:tw-max-w-[90vw] sm:tw-flex-col">
+        <div className="tw-bg-s1 tw-flex tw-items-center tw-gap-[2rem] tw-p-[.5rem] tw-rounded-[1.5rem] tw-w-[fit-content] tw-mx-[auto] tw-mt-[10rem] md:tw-gap-[1rem] md:tw-max-w-[90vw] sm:tw-flex-col sm:tw-mt-[7rem]">
           <div className="tw-flex tw-gap-[.5rem] tw-font-bold tw-uppercase">
             <div className="tw-text-n1 tw-px-[1.5rem] border-n5-right md:tw-px-[.5rem]">
               <p className="tw-text-n5 tw-text-12 tw-mb-[.5rem] md:tw-mb-0">
@@ -48,7 +48,7 @@ const Hero = () => {
               <select
                 name=""
                 id=""
-                className="tw-text-16 tw-uppercase pointer md:tw-text-[14px]"
+                className="tw-bg-s1 tw-text-16 tw-uppercase pointer md:tw-text-[14px]"
                 onChange={(e) => setModelTarget(e.target.value)}
               >
                 {models?.map((model, index) => {
@@ -72,7 +72,7 @@ const Hero = () => {
               <select
                 name=""
                 id=""
-                className="tw-text-16 tw-uppercase pointer md:tw-text-[14px]"
+                className="tw-bg-s1 tw-text-16 tw-uppercase pointer md:tw-text-[14px]"
                 onChange={(e) => {
                   setMakerTarget((value) => e.target.value);
                   // console.log("MakerTarget", makerTarget, e.target.value);

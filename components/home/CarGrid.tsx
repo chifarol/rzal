@@ -20,14 +20,14 @@ const CarGrid = ({ vehiclesData }: Props) => {
   }, []);
 
   return (
-    <div className="tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[1.5rem]">
+    <div className="tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[1rem]">
       <p className="tw-text-n5 tw-font- tw-mb-[.5rem]  tw-text-center md:tw-mb-0">
         Vehicles you may like
       </p>
       <h3 className="tw-text-32 tw-text-n1 tw-font-bold md:tw-text-20  tw-text-center">
         TRENDING
       </h3>
-      <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[2rem] s:tw-flex s:tw-flex-col md:tw-mt-[1.5rem]">
+      <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[1.5rem] tw-mt-[2rem] sm:tw-flex sm:tw-flex-col sm:tw-gap-[1rem] s:tw-flex-col md:tw-mt-[1.5rem]">
         {/* GRID ITEM  */}
         {vehicles?.map(
           (vehicle, index) =>
