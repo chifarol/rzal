@@ -6,6 +6,12 @@ export type VehicleType = {
   slug: string;
   featured_media: number;
   guid: { rendered: string };
+  yoast_head: string;
+  yoast_head_json: {
+    title: string;
+    og_locale: string;
+    og_site_name: string;
+  };
   acf: {
     vehicle_name: string;
     vehicle_description: string;
@@ -36,6 +42,12 @@ export type ModelType =
       id: number;
       title: { rendered: string };
       slug: string;
+      yoast_head: string;
+      yoast_head_json: {
+        title: string;
+        og_locale: string;
+        og_site_name: string;
+      };
       acf: {
         description: string;
         disabled: string;

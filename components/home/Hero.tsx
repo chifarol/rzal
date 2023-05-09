@@ -23,8 +23,6 @@ const Hero = () => {
     modelsResult.data
       ? setModelTarget(modelsResult.data[0].slug)
       : setModelTarget("all");
-
-    setMakerTarget("all");
   }, [modelsResult, manufacturersResult]);
 
   return (
@@ -75,7 +73,10 @@ const Hero = () => {
                 name=""
                 id=""
                 className="tw-text-16 tw-uppercase pointer md:tw-text-[14px]"
-                onChange={(e) => setMakerTarget(e.target.value)}
+                onChange={(e) => {
+                  setMakerTarget((value) => e.target.value);
+                  // console.log("MakerTarget", makerTarget, e.target.value);
+                }}
               >
                 <option value="all">All</option>
                 {makers?.map((maker, index) => (

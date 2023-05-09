@@ -48,6 +48,7 @@ const Searchpage = ({
     setModels(modelData);
   }, [modelsResult]);
 
+  // when next router is ready
   useEffect(() => {
     const modelSearchArray = models?.map((model) => model.slug);
     const modelQuery = router.query.model as string;

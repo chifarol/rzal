@@ -17,7 +17,7 @@ export const useSwrGet = (key: string) => {
 
 export const modelsData = () => {
   const { data, error, isLoading } = useSWR(
-    "/wp-json/wp/v2/vehicle_models?_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=acf",
+    "/wp-json/wp/v2/vehicle_models?_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=acf&_fields[]=yoast_head&_fields[]=yoast_head_json",
     (url) =>
       axios
         .get(process.env.NEXT_PUBLIC_BACKEND_SERVER_URL + url)
@@ -28,7 +28,7 @@ export const modelsData = () => {
 };
 export const manufacturersData = () => {
   const { data, error, isLoading } = useSWR(
-    "/wp-json/wp/v2/vehicle_manufacturers?_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=acf",
+    "/wp-json/wp/v2/vehicle_manufacturers?_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=acf&_fields[]=yoast_head&_fields[]=yoast_head_json",
     (url) =>
       axios
         .get(process.env.NEXT_PUBLIC_BACKEND_SERVER_URL + url)
@@ -38,7 +38,7 @@ export const manufacturersData = () => {
 };
 export const vehiclesData = () => {
   const { data, error, isLoading } = useSWR(
-    "/wp-json/wp/v2/vehicles?acf_format=standard&_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=featured_media&_fields[]=guid&_fields[]=acf",
+    "/wp-json/wp/v2/vehicles?acf_format=standard&_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=featured_media&_fields[]=guid&_fields[]=acf&_fields[]=yoast_head&_fields[]=yoast_head_json",
     (url) =>
       axios
         .get(process.env.NEXT_PUBLIC_BACKEND_SERVER_URL + url)

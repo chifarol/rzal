@@ -7,10 +7,19 @@ import { getVehicleData, vehiclesData } from "@/components/functions/swr";
 import { VehicleArrayType, VehicleType } from "@/components/functions/types";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import axios from "axios";
+import parse from "html-react-parser";
+import Head from "next/head";
 
 export default function Post({ vehicleData }: { vehicleData: VehicleType }) {
+  const fullHead = parse(vehicleData.yoast_head || "");
   return (
     <Layout>
+      <Head>
+        {fullHead}
+        <title>
+          Hire {vehicleData.title.rendered} - Vehicle Details - Rzal Car Hire
+        </title>
+      </Head>
       <Navbar fill="#171020" />
       <main className="">
         <Detailspage vehicleData={vehicleData} />
@@ -40,7 +49,7 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const vehicleData: VehicleType[] = await axios
     .get(
       process.env.NEXT_PUBLIC_BACKEND_SERVER_URL +
-        `/wp-json/wp/v2/vehicles?slug=${params?.slug}&acf_format=standard`
+        `/wp-json/wp/v2/vehicles?acf_format=standard&_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=featured_media&_fields[]=guid&_fields[]=acf&_fields[]=yoast_head&_fields[]=yoast_head_json`
     )
     .then((res) => res.data);
   // console.log("vehicleData", vehicleData);
