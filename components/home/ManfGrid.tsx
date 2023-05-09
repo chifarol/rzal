@@ -19,7 +19,7 @@ const ManfGrid = ({ manfData }: Props) => {
     setModels(manfData);
   }, []);
   return (
-    <div className="tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[1.5rem]">
+    <div className="tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[1rem]">
       <p className="tw-text-n5 tw-font- tw-mb-[.5rem] md:tw-mb-0">
         Vehicle Manufacturers
       </p>

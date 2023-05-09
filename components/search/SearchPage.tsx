@@ -132,7 +132,7 @@ const Searchpage = ({
     return arrClone;
   }
   return (
-    <div className="tw-p-[4rem] md:tw-p-[1.5rem] tw-text-n1">
+    <div className="tw-p-[4rem] md:tw-p-[1rem] tw-text-n1">
       {!vehiclesResult || !modelsResult || !manufacturersResult ? (
         <PageLoader />
       ) : (

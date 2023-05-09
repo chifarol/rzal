@@ -13,7 +13,7 @@ type Props = {};
 const Footer = (props: Props) => {
   return (
     <>
-      <div className="tw-bg-[#171020] tw-flex tw-flex-col tw-gap-[2rem] tw-items-center tw-p-[3rem] tw-mt-[auto] md:tw-gap-[1.5rem] md:tw-p-[2rem_1.5rem] sm:tw-items-start">
+      <div className="tw-bg-[#171020] tw-flex tw-flex-col tw-gap-[2rem] tw-items-center tw-p-[3rem] tw-mt-[auto] md:tw-gap-[1.5rem] md:tw-p-[2rem_1rem] sm:tw-items-start">
         <Image
           width={120}
           alt="vehicle"
@@ -108,7 +108,7 @@ const Footer = (props: Props) => {
         <Link
           href="https://wa.me/2347060710099"
           target="_blank"
-          className="tw-ml-[auto] tw-mr-[2rem] tw-h-[3rem] tw-w-[3rem] tw-grid tw-place-items-center tw-bg-[#25D366] tw-rounded-[100px] sh-24"
+          className="tw-ml-[auto] tw-mr-[0] tw-h-[3rem] tw-w-[3rem] tw-grid tw-place-items-center tw-bg-[#25D366] tw-rounded-[100px] sh-24"
         >
           <Image
             alt="whatsapp-icon"
