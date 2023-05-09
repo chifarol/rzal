@@ -24,7 +24,7 @@ const Navbar = ({ fill = "#221C29" }: Props) => {
 
   return (
     <div
-      className={`tw-flex tw-items-center tw-justify-between tw-text-s1 tw-px-[4rem] tw-py-[2rem] tw-bg-[${fill}] md:tw-p-[1remrem]`}
+      className={`tw-flex tw-items-center tw-justify-between tw-text-s1 tw-px-[4rem] tw-py-[2rem] tw-bg-[${fill}] md:tw-p-[1.5rem_1rem]`}
     >
       <Link href="/" className="tw-text-20 tw-text-bold md:tw-text-16">
         RITZ CAR HIRE
