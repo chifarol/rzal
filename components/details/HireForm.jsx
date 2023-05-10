@@ -160,7 +160,7 @@ export const HireForm = ({ vehicleData }) => {
                 <span>Pickup Date</span>
                 <input
                   type="date"
-                  className="tw-h-[3.5rem] tw-mt-[0.5rem]  tw-w-[100%] tw-p-[1rem] sm:tw-max-w-[130px]"
+                  className="tw-bg-s1 tw-h-[3.5rem] tw-mt-[0.5rem]  tw-w-[100%] tw-p-[1rem] sm:tw-max-w-[130px]"
                   id="date"
                   name="startdate"
                   ref={startDateRef}
@@ -175,7 +175,7 @@ export const HireForm = ({ vehicleData }) => {
                 <span>Return Date</span>
                 <input
                   type="date"
-                  className="tw-h-[3.5rem] tw-mt-[0.5rem]  tw-w-[100%] tw-p-[1rem] sm:tw-max-w-[130px]"
+                  className="tw-bg-s1 tw-h-[3.5rem] tw-mt-[0.5rem]  tw-w-[100%] tw-p-[1rem] sm:tw-max-w-[130px]"
                   id="date"
                   name="enddate"
                   ref={returnDateRef}
