@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
+const axios = require("axios");
 
-export default (req, res) => {
+export default async (req, res) => {
   const {
     name,
     email,
@@ -14,7 +15,37 @@ export default (req, res) => {
     returnDate,
     text,
   } = req.body;
-  let status = false;
+
+  const createBooking = {
+    status: "publish",
+    title: `${vehicle.title.rendered} ordered by ${name}`,
+    fields: {
+      vehicle_ordered: vehicle.id,
+      full_name: name,
+      email: email,
+      phone_number: phone,
+      takeoff_address: finalAdress,
+      final_address: takeoffAddress,
+      pickup_date: startDate,
+      return_date: returnDate,
+    },
+  };
+
+  const bookingRes = await axios
+    .post(
+      process.env.NEXT_PUBLIC_BACKEND_SERVER_URL +
+        `/wp-json/wp/v2/vehicle_bookings`,
+      createBooking,
+      {
+        auth: {
+          username: "ilodigwechinaza@gmail.com",
+          password: "Sz1f XTSX WuiG 3Zvz TAid BL0m",
+        },
+      }
+    )
+    .then((res) => console.log(res.data))
+    .catch((e) => console.log(e));
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -61,6 +92,4 @@ export default (req, res) => {
       res.json({ emailStatus: true, msg: "mail sent" });
     }
   });
-
-  console.log(name, email, text);
 };

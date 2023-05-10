@@ -35,6 +35,5 @@ export default (req, res) => {
       res.json({ emailStatus: true, msg: "mail sent" });
     }
   });
-
   console.log(name, email, text);
 };

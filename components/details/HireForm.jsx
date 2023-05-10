@@ -45,7 +45,7 @@ export const HireForm = ({ vehicleData }) => {
         phone: phoneRef.current.value,
         finalAdress: finalAdressRef.current.value,
         takeoffAddress: takeoffAddressRef.current.value,
-        vehicle: vehicleData.title.rendered,
+        vehicle: vehicleData,
         vehiclePageFr: window.location.href,
         vehiclePage: vehicleData.guid.rendered,
         startDate: startDateRef.current.value,
