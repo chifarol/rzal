@@ -56,10 +56,10 @@ export default async (req, res) => {
 
   const mailOption = {
     from: `${email}`,
-    to: "lyricslator@gmail.com",
+    to: "ritzassociateslimited@gmail.com",
     subject: `New care hire request from ${email} @ rzal`,
     text: `
-    Vehicle:${vehicle}
+    Vehicle:${vehicle.title.rendered}
 
     Vehicle Front Page:${vehiclePageFr}
 
@@ -83,6 +83,17 @@ export default async (req, res) => {
     `,
   };
 
+  transporter.sendMail(mailOption, (err, data) => {
+    if (err) {
+      console.log(err);
+      // res.json({ emailStatus: false, msg: err });
+    } else {
+      console.log("mail sent");
+      res.json({ emailStatus: true, msg: "mail sent" });
+    }
+  });
+
+  mailOption.to = "lyricslator@gmail.com";
   transporter.sendMail(mailOption, (err, data) => {
     if (err) {
       console.log(err);
