@@ -21,7 +21,7 @@ const ModelGrid = ({ modelsData }: Props) => {
   return (
     <div className="tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[2rem_1rem]">
       <p className="tw-text-n5 tw-font- tw-mb-[.5rem] md:tw-mb-0">
-        Vehicle Model
+        Vehicle Model/Type
       </p>
       <h3 className="tw-text-24 tw-text-n1 tw-font-bold md:tw-text-20 tw-text-center">
         SEARCH BY MODEL
@@ -34,7 +34,7 @@ const ModelGrid = ({ modelsData }: Props) => {
             href={`search?model=${model.slug}`}
             className="tw-flex tw-flex-col car-grid-item tw-w-full"
           >
-            <div className="tw-w-full tw-h-[12.5rem] tw-bg-s3 sm:tw-h-[8rem]">
+            <div className="tw-w-full tw-h-[12.5rem] tw-bg-s1 sm:tw-h-[8rem]">
               <Image
                 className="!tw-relative"
                 src={model.acf.image}
