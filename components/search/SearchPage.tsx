@@ -132,118 +132,15 @@ const Searchpage = ({
     return arrClone;
   }
   return (
-    <div className="tw-p-[4rem] md:tw-p-[1rem] tw-text-n1">
+    <div className="tw-relative tw-p-[4rem] md:tw-p-[1rem] tw-text-n1">
       {!vehiclesResult || !modelsResult || !manufacturersResult ? (
         <PageLoader />
       ) : (
         <>
-          <div className="tw-w-[fit-content] tw-pl-[2rem] tw-mt-[-4.5rem] tw-fixed tw-bottom-[2rem] tw-left-[2rem] tw-z-[10] pointer tw-hidden md:tw-block">
-            {/* mobile filter */}
-            <div
-              className="tw-ml-[-3rem] tw-h-[3rem] tw-w-[3rem] tw-grid tw-place-items-center tw-bg-s1 tw-rounded-[100px] sh-24"
-              onClick={() => setMobileFilter(!mobileFilter)}
-            >
-              <Image
-                alt="whatsapp-icon"
-                width={32}
-                height={32}
-                className=""
-                src={filterIcon}
-              />
-            </div>
-            {mobileFilter && (
-              <div className="tw-p-[1rem] tw-absolute tw-top-[-33rem] tw-left-[1rem] tw-bg-s1 sh-24 tw-rounded-[12px] tw-w-[14rem]">
-                <h4 className="tw-font-bold">FILTERS</h4>
-                <div className="tw-flex tw-flex-col tw-gap-[1rem] tw-mt-[1.5rem]">
-                  {/* optiongroup */}
-                  <div className="tw">
-                    <span
-                      className="tw-text-n5"
-                      onClick={() => {
-                        // console.log(modelSearch)
-                      }}
-                    >
-                      Type
-                    </span>
-                    <div className="tw-flex tw-flex-col tw-gap-[.5rem] tw-mt-[.5rem]">
-                      {/* input group */}
-                      {models?.map((model, index) => (
-                        <div
-                          className="tw-flex tw-items-center tw-gap-[.5rem]"
-                          key={index}
-                        >
-                          <label
-                            className="checkbox-container"
-                            htmlFor={model.slug}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={modelSearch?.includes(model.slug)}
-                              id={model.slug}
-                              onChange={(e) => {
-                                setModelSearch(
-                                  addRemoveString(
-                                    modelSearch,
-                                    model.slug,
-                                    e.target.checked
-                                  )
-                                );
-                              }}
-                            />
-                            <span className="checkmark"></span>
-                          </label>
-                          <p className="tw">{model.title.rendered}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  {/* manf optiongroup */}
-                  <div className="tw">
-                    <span
-                      className="tw-text-n5"
-                      onClick={() => {
-                        // console.log(manfSearch)
-                      }}
-                    >
-                      Manufacturer
-                    </span>
-                    <div className="tw-flex tw-flex-col tw-gap-[.5rem] tw-mt-[.5rem]">
-                      {/* input group */}
-                      {manufacturers?.map((manf, index) => (
-                        <div
-                          className="tw-flex tw-items-center tw-gap-[.5rem]"
-                          key={index}
-                        >
-                          <label
-                            className="checkbox-container"
-                            htmlFor={manf.slug}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={manfSearch?.includes(manf.slug)}
-                              id={manf.slug}
-                              onChange={(e) => {
-                                setManfSearch(
-                                  addRemoveString(
-                                    manfSearch,
-                                    manf.slug,
-                                    e.target.checked
-                                  )
-                                );
-                              }}
-                            />
-                            <span className="checkmark"></span>
-                          </label>
-                          <p className="tw">{manf.title.rendered}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div onClick={() => window.history.back()}>
+          <div
+            onClick={() => window.history.back()}
+            className="md:tw-pt-[1rem]"
+          >
             <Image
               className="!tw-relative pointer tw-mb-[1rem]"
               src={backIcon}
@@ -363,16 +260,128 @@ const Searchpage = ({
                   onChange={(e) => setSearchTerm(e.target.value)}
                 ></input>
               </div>
-              {/* grid */}
+              {/* back icon & mobile filters */}
               <div
-                className="tw-text-n4 tw-mt-[2rem] md:tw-mt-[1rem]"
+                className="tw-my-[2rem] md:tw-my-[1.5rem] tw-flex tw-gap-[3rem] tw-justify-between tw-items-center"
                 onClick={() => {
                   // console.log("vehiclescat", vehicles)
                 }}
               >
-                Showing {vehicles?.length} of {vehiclesResult?.length}
+                <p className="tw-text-n4">
+                  Showing {vehicles?.length} of {vehiclesResult?.length}
+                </p>
+                <div className="tw-relativ tw-w-[fit-content] tw-top-[10rem] tw-left-[2rem] tw-z-[10] pointer tw-hidden md:tw-block">
+                  {/* mobile filter icon */}
+                  <div
+                    className="tw-h-[3rem] tw-w-[3rem] tw-grid tw-place-items-center tw-bg-s1 tw-rounded-[100px] sh-24"
+                    onClick={() => setMobileFilter(!mobileFilter)}
+                  >
+                    <Image
+                      alt="whatsapp-icon"
+                      width={32}
+                      height={32}
+                      className=""
+                      src={filterIcon}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[1rem] s:tw-flex s:tw-flex-col md:tw-mt-[.5rem] sm:tw-gap-[.75rem]">
+              {/* mobile filter list */}
+              <div
+                className={`${
+                  mobileFilter ? "tw-max-[1000px] tw-mb-[2rem]" : "tw-max-h-[0]"
+                } tw-hidden tw-w-full tw-overflow-hidden tw-absolut tw-top-[-33rem] tw-left-[1rem] tw-rounded-[12px] tw-w-[14rem] md:tw-block`}
+              >
+                <h4 className="tw-font-bold">FILTERS</h4>
+                <div className="tw-grid tw-grid-cols-2 tw-gap-[1rem] tw-mt-[1rem]">
+                  {/* optiongroup */}
+                  <div className="tw">
+                    <span
+                      className="tw-text-n5"
+                      onClick={() => {
+                        // console.log(modelSearch)
+                      }}
+                    >
+                      Type
+                    </span>
+                    <div className="tw-flex tw-flex-col tw-gap-[.5rem] tw-mt-[.5rem]">
+                      {/* input group */}
+                      {models?.map((model, index) => (
+                        <div
+                          className="tw-flex tw-items-center tw-gap-[.5rem]"
+                          key={index}
+                        >
+                          <label
+                            className="checkbox-container"
+                            htmlFor={model.slug}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={modelSearch?.includes(model.slug)}
+                              id={model.slug}
+                              onChange={(e) => {
+                                setModelSearch(
+                                  addRemoveString(
+                                    modelSearch,
+                                    model.slug,
+                                    e.target.checked
+                                  )
+                                );
+                              }}
+                            />
+                            <span className="checkmark"></span>
+                          </label>
+                          <p className="tw">{model.title.rendered}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* manf optiongroup */}
+                  <div className="tw">
+                    <span
+                      className="tw-text-n5"
+                      onClick={() => {
+                        // console.log(manfSearch)
+                      }}
+                    >
+                      Manufacturer
+                    </span>
+                    <div className="tw-flex tw-flex-col tw-gap-[.5rem] tw-mt-[.5rem]">
+                      {/* input group */}
+                      {manufacturers?.map((manf, index) => (
+                        <div
+                          className="tw-flex tw-items-center tw-gap-[.5rem]"
+                          key={index}
+                        >
+                          <label
+                            className="checkbox-container"
+                            htmlFor={manf.slug}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={manfSearch?.includes(manf.slug)}
+                              id={manf.slug}
+                              onChange={(e) => {
+                                setManfSearch(
+                                  addRemoveString(
+                                    manfSearch,
+                                    manf.slug,
+                                    e.target.checked
+                                  )
+                                );
+                              }}
+                            />
+                            <span className="checkmark"></span>
+                          </label>
+                          <p className="tw">{manf.title.rendered}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[1rem] tw-mb-[2rem] s:tw-flex s:tw-flex-col md:tw-mt-[.5rem] sm:tw-gap-[.75rem]">
                 {/* GRID ITEM  */}
                 {vehicles?.map((vehicle, index) => (
                   <Link
