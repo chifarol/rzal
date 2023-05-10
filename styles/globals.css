@@ -183,4 +183,8 @@ textarea:focus {
   .hero-bg {
     background-size: 600px !important;
   }
+  .section1 {
+    background-position-y: -419px;
+    background-size: 600px;
+  }
 }

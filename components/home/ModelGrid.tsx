@@ -19,14 +19,14 @@ const ModelGrid = ({ modelsData }: Props) => {
     setModels(modelsData);
   }, []);
   return (
-    <div className="tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[1rem]">
+    <div className="tw-flex tw-flex-col tw-items-center tw-p-[4rem] md:tw-p-[2rem_1rem]">
       <p className="tw-text-n5 tw-font- tw-mb-[.5rem] md:tw-mb-0">
         Vehicle Model
       </p>
       <h3 className="tw-text-24 tw-text-n1 tw-font-bold md:tw-text-20 tw-text-center">
         SEARCH BY MODEL
       </h3>
-      <div className="tw-grid tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[2rem] md:tw-mt-[1.5rem] md:tw-grid-cols-2">
+      <div className="tw-grid tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[2rem] md:tw-mt-[1.5rem] md:tw-grid-cols-2 sm:tw-gap-[.75rem]">
         {/* GRID ITEM  */}
         {models?.map((model, index) => (
           <Link

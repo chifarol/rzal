@@ -372,7 +372,7 @@ const Searchpage = ({
               >
                 Showing {vehicles?.length} of {vehiclesResult?.length}
               </div>
-              <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[1rem] s:tw-flex s:tw-flex-col md:tw-mt-[.5rem] md:tw-gap-[1rem]">
+              <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[1rem] s:tw-flex s:tw-flex-col md:tw-mt-[.5rem] sm:tw-gap-[.75rem]">
                 {/* GRID ITEM  */}
                 {vehicles?.map((vehicle, index) => (
                   <Link
