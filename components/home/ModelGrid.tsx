@@ -34,7 +34,7 @@ const ModelGrid = ({ modelsData }: Props) => {
             href={`search?model=${model.slug}`}
             className="tw-flex tw-flex-col car-grid-item tw-w-full"
           >
-            <div className="tw-w-full tw-h-[12.5rem] tw-bg-s1 sm:tw-h-[8rem]">
+            <div className="tw-w-full tw-h-[12.5rem] tw-bg-s2 sm:tw-h-[8rem]">
               <Image
                 className="!tw-relative"
                 src={model.acf.image}
