@@ -42,10 +42,9 @@ export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   let vehiclesData: VehicleArrayType = await axios
     .get(
       process.env.NEXT_PUBLIC_BACKEND_SERVER_URL +
-        `/wp-json/wp/v2/vehicles?acf_format=standard&_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=featured_media&_fields[]=guid&_fields[]=acf&_fields[]=yoast_head&_fields[]=yoast_head_json`
+        `/wp-json/wp/v2/vehicles?per_page=40&acf_format=standard&_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=featured_media&_fields[]=guid&_fields[]=acf&_fields[]=yoast_head&_fields[]=yoast_head_json`
     )
     .then((res) => res.data);
-  vehiclesData = vehiclesData.filter((x, index) => index < 7);
   const modelsData = await axios
     .get(
       process.env.NEXT_PUBLIC_BACKEND_SERVER_URL +

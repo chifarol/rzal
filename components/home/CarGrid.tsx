@@ -27,7 +27,7 @@ const CarGrid = ({ vehiclesData }: Props) => {
       <h3 className="tw-text-32 tw-text-n1 tw-font-bold md:tw-text-20  tw-text-center">
         TRENDING
       </h3>
-      <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[1.5rem] tw-mt-[2rem] sm:tw-flex sm:tw-flex-col sm:tw-gap-[1rem] s:tw-flex-col md:tw-mt-[1.5rem]">
+      <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[1.5rem] tw-mt-[2rem] m:tw-flex sm:tw-flex-col sm:tw-gap-[1rem] s:tw-flex-col md:tw-mt-[1.5rem]">
         {/* GRID ITEM  */}
         {vehicles?.map(
           (vehicle, index) =>
@@ -46,7 +46,7 @@ const CarGrid = ({ vehiclesData }: Props) => {
                     style={{ objectFit: "cover" }}
                   />
                 </div>
-                <div className="tw-flex tw-flex-col tw-p-[1rem] tw-bg-s1">
+                <div className="tw-flex tw-flex-col tw-p-[1rem] tw-bg-s1 sm:tw-p-[.5rem]">
                   <h6 className="tw-text-n1 tw-text-24 tw-font-bold md:tw-text-20 truncate-sm">
                     {vehicle.acf.vehicle_name}
                   </h6>

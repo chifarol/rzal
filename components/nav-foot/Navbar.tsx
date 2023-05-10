@@ -70,16 +70,16 @@ const Navbar = ({ fill = "#221C29" }: Props) => {
         )}
         {menuIsOpen && (
           <div className="tw-absolute tw-z-[40] tw-p-[.5rem_1rem] tw-right-[0.75rem] tw-top-[2rem] tw-bg-s1 tw-flex tw-flex-col tw-text-n1 tw-w-[150px] tw-rounded-[12px] sh-410">
-            <Link href="#" className="tw-py-[.5rem] border-s7-bottom">
+            <Link href="/" className="tw-py-[.5rem] border-s7-bottom">
               Home
             </Link>
-            <Link href="#" className="tw-py-[.5rem] border-s7-bottom">
-              Catalogue
-            </Link>
-            <Link href="#" className="tw-py-[.5rem] border-s7-bottom">
+            <Link
+              href="/search?model=all&manufacturer=all"
+              className="tw-py-[.5rem] border-s7-bottom"
+            >
               Hire
             </Link>
-            <Link href="#" className="tw-py-[.5rem] border-s7-bottom">
+            <Link href="/contact-us" className="tw-py-[.5rem] border-s7-bottom">
               Contact Us
             </Link>
           </div>

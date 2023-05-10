@@ -31,7 +31,7 @@ export async function getStaticPaths() {
   const vehicles: VehicleArrayType = await axios
     .get(
       process.env.NEXT_PUBLIC_BACKEND_SERVER_URL +
-        "/wp-json/wp/v2/vehicles?acf_format=standard"
+        "/wp-json/wp/v2/vehicles?per_page=40&acf_format=standard&acf_format=standard&_fields[]=id&_fields[]=title&_fields[]=slug&_fields[]=featured_media&_fields[]=guid&_fields[]=acf&_fields[]=yoast_head&_fields[]=yoast_head_json"
     )
     .then((res) => res.data);
   // console.log("vehicles", vehicles);

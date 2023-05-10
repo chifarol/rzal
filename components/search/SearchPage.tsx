@@ -372,7 +372,7 @@ const Searchpage = ({
               >
                 Showing {vehicles?.length} of {vehiclesResult?.length}
               </div>
-              <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[1rem] s:tw-flex s:tw-flex-col md:tw-mt-[.5rem]">
+              <div className="tw-grid md:tw-grid-cols-2 tw-grid-cols-3 tw-justify-center tw-gap-[2rem] tw-mt-[1rem] s:tw-flex s:tw-flex-col md:tw-mt-[.5rem] md:tw-gap-[1rem]">
                 {/* GRID ITEM  */}
                 {vehicles?.map((vehicle, index) => (
                   <Link
@@ -389,7 +389,7 @@ const Searchpage = ({
                         style={{ objectFit: "cover" }}
                       />
                     </div>
-                    <div className="tw-flex tw-flex-col tw-p-[1rem] tw-bg-s1">
+                    <div className="tw-flex tw-flex-col tw-p-[1rem] tw-bg-s1 sm:tw-px-[.5rem]">
                       <h6 className="tw-text-n1 tw-text-24 tw-font-bold md:tw-text-20 truncate-sm">
                         {vehicle.acf.vehicle_name}
                       </h6>
